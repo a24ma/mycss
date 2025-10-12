@@ -1,0 +1,408 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css");
+
+:root {
+    /* メイン文字色：白に近いが純白より少し暗め */
+    --l-fg-color: rgb(230, 230, 230);
+    /* #E6E6E6 */
+    --l-fg-1-color: rgb(215, 215, 215);
+    --l-fg-2-color: rgb(200, 200, 200);
+
+    /* アクセントカラー（例：注釈用・強調用） */
+    --l-fg-note-color: rgb(36, 166, 252);
+
+    /* 全体背景色：青みが薄いダークグレー寄り */
+    --l-bg-color: rgb(25, 29, 32);
+    /* #191D20 */
+    --l-bg-1-color: rgb(44, 58, 70);
+    /* #2C3A46 */
+    --l-bg-2-color: rgb(40, 51, 63);
+    /* #28333F */
+    --l-bg-3-color: rgb(36, 46, 55);
+    /* #242E37 */
+    --l-bg-4-color: rgb(31, 39, 46);
+    /* #1F272E */
+
+    /* シャドウ用 */
+    --l-shadow-color: rgba(0, 0, 0, 0.3);
+
+    /* blockquote の背景・枠線 */
+    --blockquote-bg: rgb(28, 32, 42);
+    /* #293137 に近い値 */
+    --blockquote-border: rgb(46, 54, 60);
+    /* 少しだけ明るめ */
+
+    /* リンク色（オレンジ系） */
+    --l-link-color: #FFB347;
+}
+
+.light-theme {
+    /* ライトテーマ基本色 */
+    --l-fg-color: rgb(84, 93, 51);
+    --l-fg-1-color: rgb(126, 133, 100);
+    --l-fg-2-color: rgb(170, 176, 151);
+    --l-fg-note-color: rgb(139, 182, 0);
+    --l-bg-1-color: rgb(220, 220, 220);
+    --l-bg-2-color: rgb(230, 230, 230);
+    --l-bg-3-color: rgb(240, 240, 240);
+    --l-bg-4-color: rgb(245, 245, 245);
+    --l-bg-color: rgb(255, 255, 255);
+    --l-shadow-color: #000000;
+    --blockquote-bg: rgba(251, 252, 253);
+    --blockquote-border: rgb(240, 240, 240);
+    /* リンク色：ライトテーマはやや明るめのコーラル */
+    --l-link-color: #FF7F50;
+}
+
+html,
+body {
+    line-height: 1.8;
+    padding: 0 26px;
+    font-size: 18px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+body {
+    background-color: var(--l-bg-color);
+    color: var(--l-fg-color);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+    padding-bottom: 50vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: bold;
+    text-align: center;
+    color: var(--l-fg-color);
+}
+
+h1 {
+    font-size: 150%;
+    padding: 10px 20px;
+    margin-bottom: 1em;
+    border-bottom: 2px solid var(--l-fg-color);
+}
+
+h2 {
+    font-size: 140%;
+    padding: 5px 25px;
+    margin: 1em 0;
+    background-color: var(--l-bg-2-color);
+    border-bottom-right-radius: 40px;
+    border-left: 18px solid var(--l-fg-color);
+    border-bottom: 2px solid var(--l-fg-color);
+}
+
+h3 {
+    font-size: 130%;
+    padding: 2px 30px;
+    margin: 1em 0 1em 18px;
+    margin-right: 10%;
+    border-left: 50px solid var(--l-bg-2-color);
+    background-color: var(--l-bg-3-color);
+    border-bottom-right-radius: 40px;
+}
+
+/* h4～h6：統一感あるモチーフ（満月／半月／三日月） */
+h4,
+h5,
+h6 {
+    position: relative;
+    padding-left: 40px;
+}
+
+h4 {
+    color: var(--l-fg-1-color);
+    font-size: 120%;
+    font-weight: bold;
+    height: 2em;
+    background-color: var(--l-bg-4-color);
+    border-bottom: 3px solid var(--l-bg-4-color);
+    /* border-top-left-radius: 80px; */
+    border-left: 70px solid var(--l-bg-color);
+    border-bottom-right-radius: 80px;
+    margin-top: 1em;
+    /* margin-left: 34px; */
+    position: relative;
+    /* 擬似要素の絶対配置用 */
+}
+
+blockquote h4 {
+    border-left-color: var(--blockquote-bg);
+}
+
+h4::before {
+    content: "";
+    position: absolute;
+    left: -1em;
+    top: 50%;
+    transform: translateY(-50%);
+    /* 以下で満月（完全な円）を描画 */
+    width: 2em;
+    /* 元の font-size:80px 相当 */
+    height: 2em;
+    background-color: var(--l-bg-2-color);
+    border-radius: 50%;
+}
+
+h5 {
+    color: var(--l-fg-2-color);
+    font-size: 110%;
+    height: 2em;
+    font-weight: bold;
+    background-color: var(--l-bg-4-color);
+    border-bottom: 0.1em solid var(--l-bg-4-color);
+    border-left: 3em solid var(--l-bg-color);
+    /* border-top-left-radius: 80px; */
+    margin-top: 1em;
+    margin-left: 2em;
+    position: relative;
+}
+
+blockquote h5 {
+    border-left-color: var(--blockquote-bg);
+}
+
+h5::before {
+    content: "";
+    position: absolute;
+    left: -1em;
+    top: 50%;
+    transform: translateY(-50%);
+    /* 半月：まず円を描いてから clip-path で右半分を切り落とす */
+    width: 2.1em;
+    /* 元の font-size:2.1em 相当 */
+    height: 2.1em;
+    background-color: var(--l-bg-2-color);
+    border-radius: 50%;
+    clip-path: inset(0 50% 0 0);
+    /* 右側を 50% 切り落とす */
+}
+
+h6 {
+    color: var(--l-fg-2-color);
+    font-size: 105%;
+    height: 2em;
+    font-weight: bold;
+    /* background-color: var(--l-bg-4-color); */
+    border-bottom: 0.2em solid var(--l-bg-3-color);
+    /* border-left: 3em solid var(--l-bg-color); */
+    margin-top: 1em;
+    margin-left: 7em;
+    position: relative;
+}
+
+/* 三日月は、疑似要素 ::before で外側の円を描き、::after で背景色の円を重ねる方法 */
+h6::before {
+    content: "";
+    position: absolute;
+    left: -1em;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.2em;
+    /* 元の font-size:2.2em 相当 */
+    height: 2.2em;
+    background-color: var(--l-bg-3-color);
+    border-radius: 50%;
+}
+
+blockquote h6::after {
+    background-color: var(--blockquote-bg);
+}
+
+h6::after {
+    content: "";
+    position: absolute;
+    /* ::after をやや右にずらして内側の穴を作る */
+    left: calc(-1em + 0.5em);
+    /* 5px ほどのオフセット */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.2em;
+    height: 2.2em;
+    background-color: var(--l-bg-color);
+    /* 見出しの背景色と同じ */
+    border-radius: 50%;
+}
+
+/* リンクのスタイル：新たに変数で管理 */
+a {
+    color: var(--l-link-color);
+}
+
+/* リストのスタイル */
+ul,
+ol {
+    padding-left: 40px;
+}
+
+li {
+    position: relative;
+    line-height: 1.8;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+li::before {
+    content: "";
+    position: absolute;
+    left: -15px;
+    top: 1.5em;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--l-bg-1-color);
+}
+
+/* インラインハイライト */
+span.hl {
+    font-size: 140%;
+    color: red;
+    font-weight: bolder;
+    border-bottom: 1px solid red;
+}
+
+span.bl {
+    font-size: 120%;
+    color: blue;
+    font-weight: bolder;
+    border-bottom: 1px solid blue;
+}
+
+span.gr {
+    font-size: 120%;
+    color: rgb(4, 154, 4);
+    font-weight: bolder;
+    border-bottom: 1px solid rgb(4, 154, 4);
+}
+
+/* blockquote の調整 */
+blockquote {
+    margin: 20px;
+    padding: 15px 20px;
+    background-color: var(--blockquote-bg);
+    border: 2px solid var(--blockquote-border);
+    border-radius: 8px;
+}
+
+/* コードスタイル */
+code {
+    /* color: #d4d4d4; */
+    background-color: #222;
+    padding: 6px;
+    font-size: 95%;
+    font-family: Consolas, Monaco, Menlo, monospace;
+}
+
+pre {
+    /* color: #d4d4d4; */
+    background-color: #222;
+    border: 2px solid var(--l-bg-3-color);
+    margin: 20px;
+    padding: 10px;
+    overflow-x: auto;
+    white-space: pre;
+}
+
+pre>code {
+    padding: 0;
+}
+
+/* details 要素 */
+details {
+    background-color: var(--l-bg-4-color);
+    margin: 20px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+details>summary {
+    background-color: var(--l-bg-4-color);
+    color: var(--l-fg-note-color);
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+/* 画像のスタイル */
+img {
+    display: block;
+    max-width: 80%;
+    height: auto;
+    max-height: 24em;
+    margin: 0 auto;
+    box-shadow:
+        0 0 0 2px var(--l-fg-1-color),
+        0 0 0 3px var(--l-fg-2-color);
+    border: 3px solid var(--l-fg-color);
+    border-radius: 4px;
+}
+
+/* テーブルがはみ出す場合の拡張用設定 */
+.full-bleed {
+    width: 100vw;
+    max-width: 90vw;
+
+    /* ❷ 中央に戻す（左:50% Shift→ -50vw 分引き戻し） */
+    margin-left: calc(50% - 45vw);
+    margin-right: calc(50% - 45vw);
+
+    /* ❸ オーバーフロー対策：列がさらに広くなったら横スクロール */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* モバイル慣性 */
+
+    background-color: var(--blockquote-bg);
+    border: 2px solid var(--blockquote-border);
+    border-radius: 8px;
+}
+
+.full-bleed table {
+    min-width: 1024px;
+    /* 列幅が圧縮され過ぎないよう任意で設定 */
+    border-collapse: collapse;
+}
+
+.full-bleed th,
+.full-bleed td {
+    padding: .5rem;
+    min-width: 256px;
+}
+
+
+/* セクション全体のインデント */
+/* 各見出しレベルごとに、見出し以降（但し新たな見出しは除く）全体に左マージンを適用 */
+/* 
+h3~ :not(h1):not(h2):not(h4):not(h5):not(h6) {
+    margin-left: 2em;
+    border-left: 1px solid var(--l-fg-color);
+}
+
+h4~ :not(h1):not(h2):not(h3):not(h5):not(h6) {
+    margin-left: 3em;
+    border-left: 1px solid var(--l-fg-color);
+}
+
+h5~ :not(h1):not(h2):not(h3):not(h4):not(h6) {
+    margin-left: 6em;
+    border-left: 1px solid var(--l-fg-color);
+}
+
+h6~ :not(h1):not(h2):not(h3):not(h4):not(h5) {
+    margin-left: 8em;
+    border-left: 1px solid var(--l-fg-color);
+}
+    */
