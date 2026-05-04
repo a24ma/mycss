@@ -55,9 +55,9 @@
 
 html,
 body {
-  line-height: 1.8;
+  line-height: 1.6;
   padding: 0 26px;
-  font-size: 14px;
+  font-size: 11px;
   max-width: 1000px;
   margin: 0 auto;
 }
